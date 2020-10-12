@@ -64,7 +64,8 @@ export interface BigConstructor {
      * Create an additional Big number constructor
      *
      * Values created with the returned constructor will have a separate set of configuration values.
-     * This can be used to create Big objects with different DP and RM values.
+     * This can be used to create Big objects with different  =
+     and RM values.
      * Big numbers created by different constructors can be used together in operations, and it is the DP and RM setting of the Big number that an operation is called upon that will apply.
      * In the interest of memory efficiency, all Big number constructors share the same prototype object,
      * so while the DP and RM (and any other own properties) of a constructor are isolated and untouchable by another, its prototype methods are not.
@@ -98,6 +99,12 @@ export interface BigConstructor {
      * Default value: 21
      */
     PE: number;
+    /*
+     * When true, an error will be thrown if a primitive number is passed to the Big constructor,
+     * or if valueOf is called, or if toNumber is called on a Big which cannot be converted to a
+     * primitive number without a loss of precision.
+     */
+    STRICT: boolean;
 }
 
 export interface Big {
